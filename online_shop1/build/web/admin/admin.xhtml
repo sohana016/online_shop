@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/jquery/jquery.js" type="text/javascript"></script>
+        <script src="resources/jquery/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/jquery/popper.min.js" type="text/javascript"></script>
+        <style>
+            body{
+                
+                background-color: #ffb3b3;
+            }
+            h1{
+                color: whitesmoke;
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:insert>
+                <ui:include src="../menu.xhtml" />
+            </ui:insert>
+    <br/><br/><br/><br/>
+        <table>
+            <tr>
+                <td>
+                    <h:form style="background-color:#ccccff">
+                    <h1>Category Name</h1>
+            <p:messages id="msg" closable="true" showDetail="true"/>
+            <p:panelGrid columns="2" style="background-color: ccccff">
+                <h:outputLabel value="Category Name"/> 
+                <p:inputText value="#{categoryMB.category.catName}"></p:inputText>
+                <h:outputLabel value="Category Description"/> 
+                <p:inputText value="#{categoryMB.category.catDesc}" />
+                 <p:commandButton action="#{categoryMB.addCategory()}" value="Save" update="msg"/>
+                   <p:commandButton  value="Reset" type="reset"/>
+                </p:panelGrid>
+           
+        </h:form>
+              </td>
+                <td> </td>
+                <td>
+                <h:form  style="background-color:#ccccff">
+                    <h1> Sub Category Name</h1>
+            <p:messages id="msg" closable="true" showDetail="true"/>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Select Category Name"/> 
+                <p:selectOneMenu value="#{subCategoryMB.catName}">
+                    <f:selectItem itemLabel="Select Category Name"  itemValue="" />
+                    
+                    <f:selectItems value="#{subCategoryMB.categoryName}"/>
+                </p:selectOneMenu>
+                <h:outputLabel value="Sub Category name"/> 
+                <p:inputText value="#{subCategoryMB.subCat.subCatName}" />
+                <h:outputLabel value="Sub Category Description"/> 
+                <p:inputText value="#{subCategoryMB.subCat.subCatDesc}" />
+                <p:commandButton action="#{subCategoryMB.addSubCategory()}" value="Save" update="msg"/>
+                 <p:commandButton  value="Reset" type="reset"/>
+                  </p:panelGrid>
+            
+        </h:form>
+                </td>
+                <td> </td>
+                <td>
+                
+                <h:form enctype="multipart/form-data"  style="background-color:#ccccff">
+                    <h1>All Product</h1>
+            <p:messages id="msg" closable="true" showDetail="true"/>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Select Category Name"/> 
+                <p:selectOneMenu value="#{productMB.catname}">
+                    <f:selectItem itemLabel="Select Category Name"  itemValue="" />
+                    
+                    <f:selectItems value="#{subCategoryMB.categoryName}"/>
+                    <p:ajax update="scat" />
+                </p:selectOneMenu>
+                <h:outputLabel value="Select Sub Category Name"/> 
+                
+                <p:selectOneMenu value="#{productMB.subcatname}" id="scat">
+                    <f:selectItem itemLabel="Select Sub Category Name"  itemValue="" />
+                         <f:selectItems value="#{productMB.subCategoryName}"/>
+                        </p:selectOneMenu>
+                
+                <h:outputLabel value="Product Name"/>
+                <p:inputText value="#{productMB.product.proName}" />
+                
+                <h:outputLabel value="Product Quantity"/>
+                <p:inputText value="#{productMB.product.proQty}" />
+                <h:outputLabel value="Product Price"/>
+                <p:inputText value="#{productMB.product.proPrice}" />
+                <h:outputLabel value="Select Image"/>
+                <p:fileUpload value="#{productMB.file}" mode="simple"/>
+                <h:outputLabel value="Product Description"/>
+                <p:inputText value="#{productMB.product.proDesc}" />
+                <p:commandButton action="#{productMB.addProduct()}" value="Save" update="msg" ajax="false"/>
+                <p:commandButton  value="Reset" type="reset"/>
+            </p:panelGrid>
+            
+        </h:form>
+                    </td>
+                <td> </td>
+                </tr>
+               </table> 
+            
+    </h:body>
+</html>
+

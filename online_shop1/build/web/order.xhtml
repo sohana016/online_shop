@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Order</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/jquery/jquery.js" type="text/javascript"></script>
+        <script src="resources/jquery/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/jquery/popper.min.js" type="text/javascript"></script>
+     <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+            .grid-item {
+
+                background-color:#14143d;
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+            }
+            a{
+                color: white;
+                font-size: small;
+            }
+            body{
+               background-image: url("resources/viewImg/backround1.jpg");
+               background-repeat: no-repeat;
+               background-size: cover;
+            }
+            h3{
+                color: white;
+            }
+        </style>
+
+    </h:head>
+    <h:body>
+        <ui:insert>
+            <ui:include src="./menu.xhtml" />
+        </ui:insert>
+      
+        <h1 style="color: white">Order</h1>
+         <h3>Order Placement</h3>
+         <p:commandLink value="How do I pay on Daraz?" /><br/>
+         <p:commandLink value="Do I need an account to shop on Daraz?" /><br/>
+         <p:commandLink value="Why am I having trouble placing products in the cart?"/><br/>
+         <p:commandLink value="How do I know my order has been confirmed?"/><br/>
+         <p:commandLink value='What does "Pre-order" or "Forthcoming" mean?' /><br/>
+         <p:commandLink value="VIEW MORE" /><br/>
+         <h3 >Where is my Order</h3><br/>
+         <p:commandLink value="How can I track my order?" /><br/>
+         <p:commandLink value="How quickly can I get my order?" /><br/>
+         <p:commandLink value="What should I do if my order is verified but not delivered for a long time?" /><br/>
+         <p:commandLink value="My order is delayed. What should I do?" /><br/>
+         <h3 >Order Cancellation</h3>
+         <p:commandLink value="How do I cancel my order?" /><br/><br/><br/>
+       
+         <div class="grid-container">
+            <div class="grid-item">
+                <h3 class="footer-title footer-title-first">Customer Care</h3>
+
+                <a href="">Help Center</a><br/>
+                <a href="">How to Buy</a><br/>
+                <a href="">Track Your Order</a><br/>
+                <a href="">Return and Refunds</a><br/>
+                <a href="">Contact Us</a><br/>
+
+            </div>
+            <div class="grid-item">
+                <h3 class="footer-title">Earn With EasyBuy</h3>
+                <a href="">EaSyBuy University</a><br/>
+                <a href="">Sell EaSyBuy</a><br/>
+                <a href="">Code of Conduct</a>
+
+            </div>
+            <div class="grid-item">
+                <h3 class="footer-title">EasyBuy</h3>
+                <a href="">About EasyBuy</a><br/>
+                <a href="">Careers</a><br/>
+                <a href="">EayBuy Blog</a><br/>
+                <a href="">Amar EayBuy</a><br/>
+                <a href="">Terms and Condition</a><br/>
+                <a href="">Privacy Policy</a><br/>
+            </div>  
+
+        </div>
+        
+    </h:body>
+</html>
+

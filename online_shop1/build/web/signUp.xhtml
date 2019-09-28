@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>SignUp</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/jquery/jquery.js" type="text/javascript"></script>
+        <script src="resources/jquery/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/jquery/popper.min.js" type="text/javascript"></script>
+        <style>
+            body{
+                background-image: url("resources/viewImg/backround6.jpg");
+                background-repeat: no-repeat;
+                background-size:cover;
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:insert>
+                <ui:include src="./menu.xhtml" />
+            </ui:insert>
+        
+         <center>
+       <h:form>
+            <br/><br/><br/><br/><br/><br/>
+            <p:panelGrid columns="2">
+        <f:facet name="header">SignUp</f:facet>
+        <h:outputLabel for="name" value="Full Name"/>
+        <p:inputText id="name" value="#{lu.fullname}"  />
+        <h:outputLabel for="email" value="E-mail"/>
+        <p:inputText id="email" value="#{lu.email}"/>
+        <h:outputLabel for="dateofBirth" value="Date of Birth"/>
+        <p:calendar value="#{lu.dob}" id="dateofBirth"/>
+        <p:outputLabel for="phone" value="Phone Number:" />
+        <p:inputMask id="phone" value="#{lu.phone}" mask="(999) 999-99999"/>
+        <h:outputLabel for="gender" value="Gender"/>
+        <p:autoComplete id="gender" value="#{lu.gender}" completeMethod="#{lu.genders}"/>
+         <h:outputLabel for="verCode" value="Verification Code"/>
+         <p:inputText id="verCode" value="#{lu.veriCode}"  />
+          
+        <f:facet name="footer">
+            <p:commandButton type="submit" value="Submit" icon="ui-icon-check" style="margin: 0" action="#{lu.addInfo()}"/>
+            <p:commandButton type="reset" value="Reset" icon="ui-icon-check" style="margin: 0"/>
+            <p:commandButton type="submit" value="Back" icon="ui-icon-check" style="margin: 0" action="#{lu.back()}"/>
+            <p:commandLink value="Click here "/>
+        
+        </f:facet>
+    </p:panelGrid>
+           
+        </h:form>
+         </center>
+    </h:body>
+</html>
+

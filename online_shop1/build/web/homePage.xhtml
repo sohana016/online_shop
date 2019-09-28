@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Home</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/jquery/jquery.js" type="text/javascript"></script>
+        <script src="resources/jquery/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/jquery/popper.min.js" type="text/javascript"></script>
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+            .grid-item {
+
+                background-color:#14143d;
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+            }
+            a{
+                color: white;
+                font-size: small;
+            }
+            
+             body .ui-panelgrid .ui-panelgrid-cell:last-child {
+        background-color: #ffffff;
+        
+    }
+    .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+  }
+ 
+  h2{
+    text-align: center;
+    color: #2196F3;
+  }
+    body{
+                background-image: url("resources/viewImg/backround1.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <ui:insert>
+            <ui:include src="./menu.xhtml" />
+        </ui:insert>
+         <!--Carousel Strat -->
+        
+        
+        <div class="container">
+  <br/>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img src="resources/carouselImg/crousel8.jpg" alt="Chania" width="940" height="279"/>
+        <div class="carousel-caption">
+<!--          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>-->
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="resources/carouselImg/crousel4.jpg" alt="Chania" width="940" height="279"/>
+        <div class="carousel-caption">
+<!--          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>-->
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="resources/carouselImg/crousel6.jpg" alt="Flower" width="940" height="279"/>
+        <div class="carousel-caption">
+<!--          <h3>Flowers</h3>
+          <p>Beautiful flowers in Kolymbari, Crete.</p>-->
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="resources/carouselImg/crousel5.jpg" alt="Flower" width="940" height="279"/>
+        <div class="carousel-caption">
+<!--          <h3>Flowers</h3>
+          <p>Beautiful flowers in Kolymbari, Crete.</p>-->
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+        <!--Carousel End -->
+
+        <h:form id="form">
+            <br/><br/>
+            
+            <h2>Mobile Collection</h2>
+            <p:panel header="Cart">
+                <h:outputText value="#{cartHandlerMB.cartsize} #{cartHandlerMB.item}" id="cart" />
+                <h:outputLink value="viewcart.xhtml">
+                    View Cart
+                </h:outputLink>
+            </p:panel>
+            <p:dataGrid var="p" value="#{displayProductMB.allProduct}" columns="4" rows="6" paginator="true" id="p" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="5,10,15" >
+
+                <f:facet name="header">
+                    <h:outputLabel value="All Product" />
+                </f:facet>
+                <p:panel header="#{p.proName}">
+                    <h:panelGrid columns="1" >
+                        <h:graphicImage name="#{p.proUrl}" library="images" width="170" height="190"/>
+                        <p:rating />
+                        <h:outputText value="#{p.proPrice}"/>
+                        <p:commandButton action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false" styleClass="btn btn-success">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+        </h:form>
+        <p:commandLink value="See More" style="color: #D20005 ;font-size: medium"/>
+        <h:form id="for">
+            <br/><br/><br/><br/>
+            
+          
+            <h2>Women's Fashion Collection</h2>
+            <p:dataGrid var="p" value="#{displayProductMB.allProduct}" columns="4" rows="6" paginator="true" id="p" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="6,12,16" >
+
+                <f:facet name="header">
+                    <h:outputLabel value="All Product" />
+                </f:facet>
+                <p:panel header="#{p.proName}">
+                    <h:panelGrid columns="1" >
+                        <h:graphicImage name="#{p.proUrl}" library="images" width="170" height="190"/>
+                        <h:outputText value="#{p.proPrice}"/>
+                        <p:commandButton action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false" styleClass="btn btn-success">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+        </h:form>
+        <p:commandLink value="See More" style="color: #D20005 ;font-size: medium"/>
+        <h:form id="fo">
+            <br/><br/><br/><br/>
+            <h2>All Collection</h2>
+            <p:dataGrid var="p" value="#{displayProductMB.allProduct}" columns="4" rows="6" paginator="true" id="p" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="6,12,16" >
+
+                <f:facet name="header">
+                    <h:outputLabel value="All Product" />
+                </f:facet>
+                <p:panel header="#{p.proName}">
+                    <h:panelGrid columns="1" >
+                        <h:graphicImage name="#{p.proUrl}" library="images" width="170" height="190"/>
+                        <h:outputText value="#{p.proPrice}"/>
+                        <p:commandButton action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false" styleClass="btn btn-success">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+            <p:commandLink value="See More" style="color: #D20005;font-size: medium"/>
+        </h:form>
+        <br/><br/>
+        <p:dock position="middle">
+    <p:menuitem value="Home" icon="/resources/viewImg/home.png" url="#"/>
+    <p:menuitem value="Music" icon="/resources/viewImg/music.png" url="#"/>
+    <p:menuitem value="Video" icon="/resources/viewImg/video.png" url="#"/>
+    <p:menuitem value="Email" icon="/resources/viewImg/email.png" url="#"/>
+    <p:menuitem value="Portfolio" icon="/resources/viewImg/portfolio.png" url="#"/>
+    <p:menuitem value="Link" icon="/resources/viewImg/link.png" url="#"/>
+    <p:menuitem value="RSS" icon="/resources/viewImg/rss.png" url="#"/>
+    <p:menuitem value="History" icon="/resources/viewImg/history.png" url="#"/>
+</p:dock>
+        <br/><br/>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <h4 class="footer-title footer-title-first">Customer Care</h4>
+
+                <a href="">Help Center</a><br/>
+                <a href="">How to Buy</a><br/>
+                <a href="">Track Your Order</a><br/>
+                <a href="">Return and Refunds</a><br/>
+                <a href="">Contact Us</a><br/>
+
+            </div>
+            <div class="grid-item">
+                <h4 class="footer-title">Earn With EasyBuy</h4>
+                <a href="">EaSyBuy University</a><br/>
+                <a href="">Sell EaSyBuy</a><br/>
+                <a href="">Code of Conduct</a>
+
+            </div>
+            <div class="grid-item">
+                <h4 class="footer-title">EasyBuy</h4>
+                <a href="">About EasyBuy</a><br/>
+                <a href="">Careers</a><br/>
+                <a href="">EayBuy Blog</a><br/>
+                <a href="">Amar EayBuy</a><br/>
+                <a href="">Terms and Condition</a><br/>
+                <a href="">Privacy Policy</a><br/>
+            </div>  
+           
+        </div>
+        <br/><br/> <br/><br/> 
+        
+        
+
+    </h:body>
+</html>
+

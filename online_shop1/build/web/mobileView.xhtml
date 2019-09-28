@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Mobile</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/jquery/jquery.js" type="text/javascript"></script>
+        <script src="resources/jquery/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/jquery/popper.min.js" type="text/javascript"></script>
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+            .grid-item {
+
+                background-color:#14143d;
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+            }
+            a{
+                color: white;
+                 font-size: small;
+            }
+            body{
+                background-image:url("resources/viewImg/backround1.jpg"); 
+            }
+        </style>
+    </h:head>
+    <h:body>
+       <ui:insert>
+                <ui:include src="./menu.xhtml" />
+            </ui:insert>
+        
+        <h:form id="form">
+            <br/><br/>
+           
+            <p:dataGrid var="p" value="#{displayProductMB.allProduct}" columns="4" rows="8" paginator="true" id="p" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="6,12,16" >
+
+                <f:facet name="header">
+                    <h:outputLabel value="All Product" />
+                </f:facet>
+                <p:panel header="#{p.proName}">
+                    <h:panelGrid columns="1" >
+                        <h:graphicImage name="#{p.proUrl}" library="images" width="100" height="150"/>
+                        <p:rating />
+                        <h:outputText value="#{p.proPrice}"/>
+                        <p:commandButton action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+           
+        </h:form>
+        <br/><br/><br/><br/><br/><br/>
+       <div class="grid-container">
+            <div class="grid-item">
+                <h4 class="footer-title footer-title-first">Customer Care</h4>
+
+                <a href="">Help Center</a><br/>
+                <a href="">How to Buy</a><br/>
+                <a href="">Track Your Order</a><br/>
+                <a href="">Return and Refunds</a><br/>
+                <a href="">Contact Us</a><br/>
+
+            </div>
+            <div class="grid-item">
+                <h4 class="footer-title">Earn With EasyBuy</h4>
+                <a href="">EaSyBuy University</a><br/>
+                <a href="">Sell EaSyBuy</a><br/>
+                <a href="">Code of Conduct</a>
+
+            </div>
+            <div class="grid-item">
+                <h4 class="footer-title">EasyBuy</h4>
+                <a href="">About EasyBuy</a><br/>
+                <a href="">Careers</a><br/>
+                <a href="">EayBuy Blog</a><br/>
+                <a href="">Amar EayBuy</a><br/>
+                <a href="">Terms and Condition</a><br/>
+                <a href="">Privacy Policy</a><br/>
+            </div>  
+
+        </div>
+ 
+    </h:body>
+</html>
+

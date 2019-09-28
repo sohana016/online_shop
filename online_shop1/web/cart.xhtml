@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cart</title>
+        
+        <style>
+            body{
+                background-image: url("resources/viewImg/backround1.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </h:head>
+    <h:body>
+       
+       <h:form id="form">
+            <br/><br/><br/><br/>
+           <p:dataTable var="cart" value="#{shoppingCart.cart}" rows="10" >
+
+                <f:facet name="header">
+                    <h:outputLabel value="your Cart" />
+                </f:facet>
+               <p:column headerText="Product Name" >
+                   <p:outputLabel value="#{cart.p.proName}"/> 
+               </p:column>
+                <p:column headerText="Quantity" >
+                    <p:inputText value="#{cart.p.proQty}" style="width:20px" />
+               </p:column>
+                <p:column headerText="Price" >
+                    <p:outputLabel value="#{cart.p.proPrice}" />
+               </p:column>
+                        <p:column headerText="Image" >
+                            <h:graphicImage name="#{cart.p.proUrl}" library="images" width="50" height="60"/>
+               </p:column>
+                <p:column headerText="Delete" >
+                    <h:commandButton value="Delete" action="#{shoppingCart.removeCart(cart)}" />
+               </p:column>
+               <f:facet name="footer">
+                   Total:<h:outputLabel value="#{shoppingCart.total}" />
+               </f:facet>
+           </p:dataTable>
+           <p:commandButton value="Update" action="#{shoppingCart.updateCart}" />
+           <p:commandButton value="Buy Now" action="#{shoppingCart.buyNow()}"  />
+           <h:outputLink value="homePage.xhtml">Continue Shopping</h:outputLink>
+           <h:outputLink value="paytype.xhtml">Process Cart</h:outputLink>
+        </h:form>
+        
+        <p:dock position="top">
+    <p:menuitem value="Home" icon="/resources/viewImg/home.png" url="#"/>
+    <p:menuitem value="Music" icon="/resources/viewImg/music.png" url="#"/>
+    <p:menuitem value="Video" icon="/resources/viewImg/video.png" url="#"/>
+    <p:menuitem value="Email" icon="/resources/viewImg/email.png" url="#"/>
+    <p:menuitem value="Portfolio" icon="/resources/viewImg/portfolio.png" url="#"/>
+    <p:menuitem value="Link" icon="/resources/viewImg/link.png" url="#"/>
+    <p:menuitem value="RSS" icon="/resources/viewImg/rss.png" url="#"/>
+    <p:menuitem value="History" icon="/resources/viewImg/history.png" url="#"/>
+</p:dock>
+    </h:body>
+</html>
+
