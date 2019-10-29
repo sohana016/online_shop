@@ -8,6 +8,7 @@ Technology:
 Jsf, Primeface, Hibernate & MySql
 
 Requirements
+
 Online Shop wants to develop there product selling system using an Online Ecommerce Website they want to record there all product and product information (purchase & sales) and get a payment through the online payment gateway.
 
 Requirements analysis
